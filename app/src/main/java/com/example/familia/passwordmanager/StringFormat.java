@@ -1,18 +1,16 @@
 package com.example.familia.passwordmanager;
 
-
 import java.text.Normalizer;
 
 public class StringFormat {
 
-    static String userName;
-    static String websiteName;
-
     private static String symbols = "-_.+!#$%&'*=?^|~0123456789";
 
-    private static boolean stringIncludesWebsiteName(String userString){
-        //for(int i=userString.length()-1;i>0;i--)
-        return false;
+    public static boolean stringIncludesWebsiteName(String userString){
+
+        if (getWebSiteName(userString).isEmpty())
+
+        return false; else return true;
 
     }
 
@@ -50,20 +48,16 @@ public class StringFormat {
             if (character > 96 && character < 123) {
                 finalString += character;
             } else {
-
                 if (charList.contains(String.valueOf(character))) {
                     finalString += character;
-
                 }
             }
-
         }
-
         return finalString;
 
     }
 
-    public static String userStringStandardize(String string) {
+    public static String formatUserString(String string) {
 
         String finalString = "";
 
@@ -76,32 +70,32 @@ public class StringFormat {
         return stringNormalize(finalString);
     }
 
+    public static String removeWebsiteNameFromString(String userString){
+
+        for (  int i = 0; i<userString.length();i++){
+            if (userString.charAt(i) == ' ') {
+                return userString.substring(i+1,userString.length());
+            }}
+
+        return userString;
+    }
+
     public static String getWebSiteName(String userString){
 
-
-        String finalString = "";
-
-        boolean characterExists = false;
+        String websiteName="";
 
         for (int i = 0; i < userString.length(); i++) {
-            if (characterExists)
-            {
-                finalString += userString.charAt(i);
-            }
-            if (userString.charAt(i) == '@' || userString.charAt(i) == '#') {
-                characterExists=true;
-            }
 
-        }
+            websiteName += userString.charAt(i);
 
-        if (characterExists) {
-            return websiteStringStandardize(finalString);
+            if (userString.charAt(i) == ' ')
+                return formatWebsiteString(websiteName);
         }
-        else return "";
+        return "";
 
     }
 
-    public static String websiteStringStandardize(String string) {
+    public static String formatWebsiteString(String string) {
 
         string = stringRemoveDomain(string);
 
@@ -115,7 +109,7 @@ public class StringFormat {
 
     }
 
-    public static String keyStringStandardize(String string) {
+    public static String formatKeywordString(String string) {
         return Normalizer.normalize(string, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 
     }

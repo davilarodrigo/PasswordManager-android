@@ -12,9 +12,9 @@ public class PasswordGenerator {
          */
         String seed;
 
-        user = StringFormat.userStringStandardize(user);
-        web = StringFormat.websiteStringStandardize(web);
-        key = StringFormat.keyStringStandardize(key);
+        user = StringFormat.formatUserString(user);
+        web = StringFormat.formatWebsiteString(web);
+        key = StringFormat.formatKeywordString(key);
 
         seed = StringEncryption.encodeHexSHA1(user + web + key);
 

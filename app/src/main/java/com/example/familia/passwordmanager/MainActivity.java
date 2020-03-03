@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                tv2.setText(StringFormat.websiteStringStandardize(ed2.getText().toString()));
+                tv2.setText(StringFormat.formatWebsiteString(ed2.getText().toString()));
 
                 if (ed2.getText().toString().isEmpty()) websiteEditTextEmpty=true; else websiteEditTextEmpty=false;
 
@@ -113,19 +113,26 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                tv1.setText(StringFormat.userStringStandardize(ed1.getText().toString()));
+                tv1.setText(StringFormat.formatUserString(ed1.getText().toString()));
 
                 if (websiteEditTextEmpty)
                     ed2.setText(StringFormat.getWebSiteName(ed1.getText().toString()));
+                   // Toast.makeText(getApplicationContext(),StringFormat.removeWebsiteNameFromString(ed1.getText().toString()),Toast.LENGTH_SHORT).show();
 
-                    //Toast.makeText(getApplicationContext(),ed2.getText().toString(),Toast.LENGTH_LONG).show();
+                if (StringFormat.stringIncludesWebsiteName(ed1.getText().toString()))
 
+                ed1.setText(StringFormat.removeWebsiteNameFromString(ed1.getText().toString()));
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+//
+
+
 
             }
+
+
         });
 
         cb.setOnClickListener(new View.OnClickListener() {
