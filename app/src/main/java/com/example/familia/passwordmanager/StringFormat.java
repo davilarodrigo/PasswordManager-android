@@ -11,7 +11,7 @@ public class StringFormat {
     private static String symbols = "-_.+!#$%&'*=?^|~0123456789";
 
     private static boolean stringIncludesWebsiteName(String userString){
-        for(int i=userString.length()-1;i>0;i--)
+        //for(int i=userString.length()-1;i>0;i--)
         return false;
 
     }
