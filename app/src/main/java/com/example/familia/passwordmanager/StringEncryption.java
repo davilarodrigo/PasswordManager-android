@@ -1,6 +1,6 @@
 package com.example.familia.passwordmanager;
 
-public class Encryption {
+public class StringEncryption {
 
     private static int rol(int num, int cnt) {
         return (num << cnt) | (num >>> (32 - cnt));

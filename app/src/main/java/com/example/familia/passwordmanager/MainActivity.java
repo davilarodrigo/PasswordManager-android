@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int type;
     private boolean paswGenerated;
-
+    private boolean websiteEditTextEmpty;
     private String user;
     private String web;
     private String key;
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         paswGenerated=false;
+        websiteEditTextEmpty=true;
 
         spinner = findViewById(R.id.spinner);
         tv1 = findViewById(R.id.textView1);
@@ -92,7 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                tv2.setText(Normalization.websiteStringStandardize(ed2.getText().toString()));
+                tv2.setText(StringFormat.websiteStringStandardize(ed2.getText().toString()));
+
+                if (ed2.getText().toString().isEmpty()) websiteEditTextEmpty=true; else websiteEditTextEmpty=false;
+
             }
 
             @Override
@@ -109,7 +113,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                tv1.setText(Normalization.userStringStandardize(ed1.getText().toString()));
+                tv1.setText(StringFormat.userStringStandardize(ed1.getText().toString()));
+
+                if (websiteEditTextEmpty)
+                    ed2.setText(StringFormat.getWebSiteName(ed1.getText().toString()));
+
+                    //Toast.makeText(getApplicationContext(),ed2.getText().toString(),Toast.LENGTH_LONG).show();
+
             }
 
             @Override
@@ -188,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         key=ed3.getText().toString();
 
         if (!(user.equals("") || web.equals("") || key.equals(""))){
-            pasw = PasswordGeneration.generate(user,web,key,type);
+            pasw = PasswordGenerator.generate(user,web,key,type);
             tv3.setText(pasw);
             setTextSize(type);
             paswGenerated=true;

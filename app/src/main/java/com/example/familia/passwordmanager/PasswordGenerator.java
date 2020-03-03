@@ -1,6 +1,6 @@
 package com.example.familia.passwordmanager;
 
-public class PasswordGeneration {
+public class PasswordGenerator {
 
     private static String vowels = "aeiou";
     private static String numbers = "4310u";
@@ -12,11 +12,11 @@ public class PasswordGeneration {
          */
         String seed;
 
-        user = Normalization.userStringStandardize(user);
-        web = Normalization.websiteStringStandardize(web);
-        key = Normalization.keyStringStandardize(key);
+        user = StringFormat.userStringStandardize(user);
+        web = StringFormat.websiteStringStandardize(web);
+        key = StringFormat.keyStringStandardize(key);
 
-        seed = Encryption.encodeHexSHA1(user + web + key);
+        seed = StringEncryption.encodeHexSHA1(user + web + key);
 
         switch (type) {
             case 1:

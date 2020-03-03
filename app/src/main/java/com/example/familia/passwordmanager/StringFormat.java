@@ -3,9 +3,18 @@ package com.example.familia.passwordmanager;
 
 import java.text.Normalizer;
 
-public class Normalization {
+public class StringFormat {
+
+    static String userName;
+    static String websiteName;
 
     private static String symbols = "-_.+!#$%&'*=?^|~0123456789";
+
+    private static boolean stringIncludesWebsiteName(String userString){
+        for(int i=userString.length()-1;i>0;i--)
+        return false;
+
+    }
 
     private static String stringRemoveDomain(String string) {
         String domainList[] = {"com", "org", "edu", "gov", "mil", "net", "int"};
@@ -65,6 +74,31 @@ public class Normalization {
             finalString += string.charAt(i);
         }
         return stringNormalize(finalString);
+    }
+
+    public static String getWebSiteName(String userString){
+
+
+        String finalString = "";
+
+        boolean characterExists = false;
+
+        for (int i = 0; i < userString.length(); i++) {
+            if (characterExists)
+            {
+                finalString += userString.charAt(i);
+            }
+            if (userString.charAt(i) == '@' || userString.charAt(i) == '#') {
+                characterExists=true;
+            }
+
+        }
+
+        if (characterExists) {
+            return websiteStringStandardize(finalString);
+        }
+        else return "";
+
     }
 
     public static String websiteStringStandardize(String string) {
