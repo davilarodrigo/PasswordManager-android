@@ -82,14 +82,16 @@ public class StringFormat {
 
     public static String getWebSiteName(String userString){
 
+
+
         String websiteName="";
 
         for (int i = 0; i < userString.length(); i++) {
 
-            websiteName += userString.charAt(i);
-
-            if (userString.charAt(i) == ' ')
+            if (userString.charAt(i) == ' ' && i+1!= userString.length())
                 return formatWebsiteString(websiteName);
+
+            websiteName += userString.charAt(i);
         }
         return "";
 

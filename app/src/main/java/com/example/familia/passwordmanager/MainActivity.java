@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 displayInfo(type);
                 paswGenerated=false;
 
-
             }
 
             @Override
