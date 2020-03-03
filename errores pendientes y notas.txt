@@ -1,0 +1,5 @@
+errores pendientes:
+
+1- al escribir un espacio al final el username, logicamente se borra todo, porque el programa entiende que todo lo previo al espacio es la pagina web
+
+la solucion es que al detectar si hay un sitio web, se debe comprobar que el ultimo espacio no sea un espacio en blanco, en caso de ser un espacio en blanco, hay que 
