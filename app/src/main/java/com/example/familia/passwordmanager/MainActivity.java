@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         Button bt1=findViewById(R.id.b1);
         Button bt2=findViewById(R.id.b2);
         Button bt3=findViewById(R.id.b3);
+        Button bt4=findViewById(R.id.b4);
+        Button bt5=findViewById(R.id.b5);
 
         cb = findViewById(R.id.checkBox);
 
@@ -126,11 +128,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 //
-
-
-
             }
-
 
         });
 
@@ -182,6 +180,21 @@ public class MainActivity extends AppCompatActivity {
                 }
                 }
         });
+
+        bt4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ed1.setText("");
+            }
+        });
+
+        bt5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ed2.setText("");
+            }
+        });
+
     }
 
     private void setTextSize(int type){
